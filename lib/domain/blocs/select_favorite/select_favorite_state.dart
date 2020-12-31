@@ -14,7 +14,7 @@ class SelectedListFavorite extends SelectFavoriteState {
     if (favorites.isNullOrEmpty()) {
       return false;
     }
-    return favorites.any((e) => e.imdbId.equalsIgnoreCase(movie.imdbId));
+    return favorites.any((e) => e.imdbId==movie.imdbId);
   }
 }
 

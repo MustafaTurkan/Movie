@@ -3,8 +3,8 @@ import 'package:Movie/infrastructure/infrastructure.dart';
 import 'package:Movie/infrastructure/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class MovieListTile extends StatelessWidget {
-   MovieListTile({Key key, @required this.appTheme, @required this.movie,  @required this.favoriteIcon,@required this.onTab}) : super(key: key);
+class FavoriteMovieListTile extends StatelessWidget {
+   FavoriteMovieListTile({Key key, @required this.appTheme, @required this.movie,  @required this.favoriteIcon,@required this.onTab}) : super(key: key);
 
   final AppTheme appTheme;
     final    Movie movie;
@@ -36,15 +36,7 @@ class MovieListTile extends StatelessWidget {
   }
 
   Widget buildImage(String src) {
-    return ImageNetwork(
-      src: src,
-      loadingBuilder: (context) {
-        return Center(
-          child:
-              WidgetFactory.circularProgressIndicator(size: 20, color: appTheme.colors.primaryPale, strokeWidth: 1.5),
-        );
-      },
-    );
+    return Image.network(src);
   }
 
   Widget buildTileTitle(String title) {

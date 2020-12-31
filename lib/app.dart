@@ -89,19 +89,15 @@ class _AppWidgetState extends State<AppWidget> {
           return MultiProvider(
             providers: [..._providers(snapshot.data)],
             builder: (context, child) {
-              return FutureBuilder<List<Movie>>(
-                  future: futureFavorites,
-                  builder: (context, snapshot) {
-                    return MaterialApp(
-                        locale: context.get<AppLocale>(listen: true).locale,
-                        localizationsDelegates: _localizationsDelegates(),
-                        supportedLocales: _supportedLocales(),
-                        title: widget.title,
-                        builder: _builder,
-                        navigatorKey: AppNavigator.key,
-                        navigatorObservers: [AppNavigator.routeObserver],
-                        home: buildHome(snapshot));
-                  });
+              return MaterialApp(
+                  locale: context.get<AppLocale>(listen: true).locale,
+                  localizationsDelegates: _localizationsDelegates(),
+                  supportedLocales: _supportedLocales(),
+                  title: widget.title,
+                  builder: _builder,
+                  navigatorKey: AppNavigator.key,
+                  navigatorObservers: [AppNavigator.routeObserver],
+                  home: buildHome(snapshot));
             },
           );
         });

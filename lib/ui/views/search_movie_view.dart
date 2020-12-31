@@ -87,24 +87,15 @@ class _SearchMovieViewState extends State<SearchMovieView> {
   }
 
   Widget buildFavoritesButton() {
-    return BlocBuilder<SelectFavoriteCubit, SelectFavoriteState>(
-      builder: (context, state) {
-        if (state is SelectedListFavorite) {
-          return IconButton(
+    return IconButton(
             icon: Icon(AppIcons.homeHeart),
             onPressed: () async {
-              if (state.favorites.isNullOrEmpty()) {
-                await MessageDialog.info(context: context, message: localizer.emptyFavorite);
-                return;
-              }
+ 
               navigator.pushFavoriteMovieListView(context);
             },
           );
         }
-        return WidgetFactory.emptyWidget();
-      },
-    );
-  }
+
 }
 
 class _MovieList extends StatelessWidget {

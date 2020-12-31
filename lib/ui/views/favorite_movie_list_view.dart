@@ -29,23 +29,15 @@ class _FavoriteMovieListViewState extends State<FavoriteMovieListView> {
         title: Text(localizer.favorites),
       ),
       body: ContentContainer(
-        child: BlocBuilder<SelectFavoriteCubit, SelectFavoriteState>(
-          builder: (context, state) {
-            if (state is SelectedListFavorite) {
-              return _MovieList(
-                appTheme: appTheme,
-              );
-            }
-            return WidgetFactory.emptyWidget();
-          },
-        ),
-      ),
+          child: _MovieFavoriteList(
+        appTheme: appTheme,
+      )),
     );
   }
 }
 
-class _MovieList extends StatelessWidget {
-  const _MovieList({Key key, @required this.appTheme}) : super(key: key);
+class _MovieFavoriteList extends StatelessWidget {
+  const _MovieFavoriteList({Key key, @required this.appTheme}) : super(key: key);
 
   final AppTheme appTheme;
 
@@ -71,7 +63,7 @@ class _MovieList extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           var movie = movies[index];
-          return MovieListTile(
+          return FavoriteMovieListTile(
             favoriteIcon: AppIcons.heart,
             appTheme: appTheme,
             movie: movie,
@@ -86,15 +78,11 @@ class _MovieList extends StatelessWidget {
         });
   }
 
-  
-  Future<DialogResult> questionDelete(BuildContext context)
-  {
-     return MessageDialog.question(
-                context: context,
-                message: context.getLocalizer().deleting,
-                buttons: DialogButton.yesNo,
-              );
+  Future<DialogResult> questionDelete(BuildContext context) {
+    return MessageDialog.question(
+      context: context,
+      message: context.getLocalizer().deleting,
+      buttons: DialogButton.yesNo,
+    );
   }
-
-
 }

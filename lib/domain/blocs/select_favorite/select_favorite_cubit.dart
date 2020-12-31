@@ -12,7 +12,7 @@ class SelectFavoriteCubit extends Cubit<SelectFavoriteState> {
   Future<void> toggleSelectionState(Movie movie) async {
     try {
       if (_isSelected(movie)) {
-        favorites.remove(movie);
+        favorites.removeWhere((e)=>e.imdbId==movie.imdbId);
         await repository.removeFavorite(movie.imdbId);
         emit(SelectedListFavorite(favorites));
       } else {
@@ -26,6 +26,6 @@ class SelectFavoriteCubit extends Cubit<SelectFavoriteState> {
   }
 
   bool _isSelected(Movie movie) {
-    return favorites.any((e) => e.imdbId.contains(movie.imdbId));
+    return favorites.any((e) => e.imdbId==movie.imdbId);
   }
 }
