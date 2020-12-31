@@ -40,7 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Information": MessageLookupByLibrary.simpleMessage("Bilgi"),
         "Question": MessageLookupByLibrary.simpleMessage("Soru"),
         "Message": MessageLookupByLibrary.simpleMessage("Mesaj"),
-        "You find a movie": MessageLookupByLibrary.simpleMessage("Bir Movie bul"),
+        "You find a movie": MessageLookupByLibrary.simpleMessage("Bir film bul"),
         "Favorites": MessageLookupByLibrary.simpleMessage("Favoriler"),
         "Deleting": MessageLookupByLibrary.simpleMessage("Favori film siliniyor..."),
         "Your favorites are empty yet": MessageLookupByLibrary.simpleMessage("Henüz favorileriniz boş"),
